@@ -6,15 +6,15 @@ import MyComponent from "./components/MyComponent";
 import React from "react";
 
 class App extends React.Component {
-  render() {
-    return (
-      <div>
-        Hello World with Khoa &amp; KhoaND
-        <MyComponent></MyComponent>
-      </div>
-    );
+    render() {
+        return (
+            <div className="app-container">
+                Hello World with Khoa &amp; KhoaND
+                <MyComponent></MyComponent>
+            </div>
+        );
 
-  }
+    }
 }
 
 
