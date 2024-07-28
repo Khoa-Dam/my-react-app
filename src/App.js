@@ -9,7 +9,7 @@ class App extends React.Component {
     render() {
         return (
             <div className="app-container">
-                Hello World with Khoa &amp; KhoaND
+                {/* Hello World with Khoa &amp; KhoaND */}
                 <MyComponent></MyComponent>
             </div>
         );
