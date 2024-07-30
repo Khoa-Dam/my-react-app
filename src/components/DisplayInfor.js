@@ -39,16 +39,9 @@ import logo from './../logo.svg';
 
 const DisplayInfor = (props) => {
     const { listUsers } = props; // object
-
+    console.log(props);
     const [isShowHideListUser, setShowHideListUser] = useState(true);
-
-    // this.state = {
-    //     isShowHideListUser: true,
-    // }
     const handleShowHideListUser = () => {
-        // this.setState = {
-        //     isShowHideListUser: true,
-        // }
         setShowHideListUser(!isShowHideListUser);
     }
     return (
