@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { BsPlusSquareFill } from "react-icons/bs";
 import { toast } from 'react-toastify';
-import { postCreateNewUser } from "../../../services/apiService";
+import { putUpdateUser } from "../../../services/apiService";
 import _ from "lodash";
 
 const ModalUpdateUser = (props) => {
@@ -18,6 +18,7 @@ const ModalUpdateUser = (props) => {
         setRole("USER");
         setImage("");
         setPreviewImage();
+        props.resetUpdateData();
     };
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -43,6 +44,8 @@ const ModalUpdateUser = (props) => {
         if (event.target && event.target.files && event.target.files[0]) {
             setPreviewImage(URL.createObjectURL(event.target.files[0]));
             setImage(event.target.files[0]);
+        } else {
+            // setPreviewImage("");
         }
 
     }
@@ -63,13 +66,8 @@ const ModalUpdateUser = (props) => {
             return;
         }
 
-        if (!password) {
-            toast.error("Invalid password");
-            return;
-        }
-
         //call api
-        let data = await postCreateNewUser(email, password, username, role, image);
+        let data = await putUpdateUser(dataUpdate.id, username, role, image);
         console.log("component data: ", data);
         if (data && data.EC === 0) {
             toast.success(data.EM);
