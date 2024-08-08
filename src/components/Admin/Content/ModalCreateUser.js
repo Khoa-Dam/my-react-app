@@ -45,7 +45,6 @@ const ModalCreateUser = (props) => {
         const isValidEmail = validateEmail(email);
         if (!isValidEmail) {
             toast.error("Invalid email");
-
             return;
         }
 
@@ -56,10 +55,11 @@ const ModalCreateUser = (props) => {
 
         //call api
         let data = await postCreateNewUser(email, password, username, role, image);
-        console.log("component res: ", data);
+        console.log("component data: ", data);
         if (data && data.EC === 0) {
             toast.success(data.EM);
             handleClose();
+            await props.fectchListUsers();
         }
         if (data && data.EC !== 0) {
             toast.error(data.EM);
